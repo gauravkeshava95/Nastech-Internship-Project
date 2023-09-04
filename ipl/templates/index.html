@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .bodytag {
+        background-image: url('{% static "pixel.jpeg" %}');
+        background-repeat: no-repeat;
+        background-size: 100% 200%;
+      }
+      select {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        font: normal 11px/22px Arial, Sans-Serif;
+        color: black;
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+        font-family: Georgia, "Times New Roman", Times, serif;
+      }
+      input[type="text"] {
+        border: 1px solid #ccc;
+        padding: 8px;
+        border-radius: 5px;
+      }
+      input[type="submit"] {
+        margin-top: 10px;
+        border-radius: 10px;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        color: darkslategrey;
+      }
+      h1 {
+        text-align: center;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        color: darkslategray;
+        align-items: center;
+        justify-content: center;
+        font-size: 100px;
+      }
+    </style>
+  </head>
+  <body class="bodytag">
+    <h1>IPL SCORE PREDICTION</h1>
+    <div style="margin-left: 40%; margin-top: 20%">
+      <form action="/" method="POST">
+        {% csrf_token %}
+
+        <!-- Batting Team Dropdown -->
+        <select class="form-input align-center" name="batting-team">
+          <option value="none">--- Select a Batting team ---</option>
+          <option value="Mumbai Indians">Mumbai Indians</option>
+          <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
+          <option value="Chennai Super Kings">Chennai Super Kings</option>
+          <option value="Rajasthan Royals">Rajasthan Royals</option>
+          <option value="Kings XI Punjab">Kings XI Punjab</option>
+          <option value="Royal Challengers Bangalore">
+            Royal Challengers Bangalore
+          </option>
+          <option value="Delhi Daredevils">Delhi Daredevils</option>
+          <option value="Sunrisers Hyderabad">
+            Sunrisers Hyderabad
+          </option></select
+        ><br />
+        <!-- Bowling Team Dropdown -->
+        <select class="form-input align-center" name="bowling-team">
+          <option value="none">--- Select a Bowling team ---</option>
+          <option value="Mumbai Indians">Mumbai Indians</option>
+          <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
+          <option value="Chennai Super Kings">Chennai Super Kings</option>
+          <option value="Rajasthan Royals">Rajasthan Royals</option>
+          <option value="Kings XI Punjab">Kings XI Punjab</option>
+          <option value="Royal Challengers Bangalore">
+            Royal Challengers Bangalore
+          </option>
+          <option value="Delhi Daredevils">Delhi Daredevils</option>
+          <option value="Sunrisers Hyderabad">
+            Sunrisers Hyderabad
+          </option></select
+        ><br />
+        <input
+          class="form-input"
+          type="text"
+          name="overs"
+          placeholder="Overs (>= 5.0) eg. 7.2"
+        /><br />
+        <input
+          class="form-input"
+          type="text"
+          name="runs"
+          placeholder="present runs"
+        /><br />
+        <input
+          class="form-input"
+          type="text"
+          name="wickets"
+          placeholder="present wickets"
+        /><br />
+        <input
+          class="form-input"
+          type="text"
+          name="runs_in_prev_5"
+          placeholder="Runs scored in previous 5 Overs"
+        /><br />
+        <input
+          class="form-input"
+          type="text"
+          name="wickets_in_prev_5"
+          placeholder="Wickets taken in previous 5 Overs"
+        /><br />
+
+        <input type="submit" class="myButton" value="Predict Score" />
+      </form>
+
+      {{score}}
+    </div>
+  </body>
+</html>
